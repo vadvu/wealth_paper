@@ -128,7 +128,9 @@ fin1 <- fin %>%
 
 write.xlsx(fin1, "imp_models/eba_nvc_4_to_12_final.xlsx")
 
-eba.nvc <- ggplot(fin1,aes(x = coef/se, fill = var))+
+# fin1 <- read.xlsx("imp_models/eba_nvc_4_to_12_final.xlsx")
+
+eba.nvc <- ggplot(fin1, aes(x = coef/se, fill = var, weight = w))+
   geom_density(alpha = 0.5, kernel = "epanechnikov")+
   theme_classic()+
   geom_vline(xintercept = c(1.96, -1.96), linetype = "dotted")+
@@ -243,7 +245,9 @@ fin1 <- fin %>%
 
 write.xlsx(fin1, "imp_models/eba_kor_4_to_12_final.xlsx")
 
-eba.nvc <- ggplot(fin1, aes(x = coef/se, fill = var))+
+# fin1 <- read.xlsx("imp_models/eba_kor_4_to_12_final.xlsx")
+
+eba.nvc <- ggplot(fin1, aes(x = coef/se, fill = var, weight = w))+
   geom_density(alpha = 0.5, kernel = "epanechnikov")+
   theme_classic()+
   geom_vline(xintercept = c(1.96, -1.96), linetype = "dotted")+
