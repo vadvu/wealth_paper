@@ -205,21 +205,23 @@ source("mi_regressions_do.R")
 source("mi_aggregation.R")
 
 
-#### 4. Matching 
+#### 4. Matching (alternative method for rare events data)
 
 source("matching.R")
 
 
-#### 5. Unit FE
+#### 5. Unit FE (alternative models specification)
 
 source("region_anal.R")
 
 
-#### 6. EBA
+#### 6. EBA (extremely intensive and long computations that require >50 hours)
 
 source("eba.R")
 
 
-#### 7. ML
+#### 7. ML (robustness check of functional form assumption)
 
 source("ML_anal.R")
+
+

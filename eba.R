@@ -30,6 +30,9 @@ comb.many <- function(x,n){
 }
 
 
+print(paste0("start of eba procedure for NAVCO: ", Sys.time()))
+
+
 #### nvc
 
 dep <- "NVC_1.3_NONVIOL"
@@ -51,7 +54,7 @@ print(
 
 
 for(j in k){
-  print(ncol(j))
+  print(paste0(ncol(j),": ", Sys.time()))
   if(ncol(j) == ncol(k[[1]])){
     fin <- data.frame(var = NA, coef = NA, se = NA, gmean = NA)
     cl <- parallel::makeCluster(6)
@@ -143,7 +146,10 @@ eba.nvc
 
 ggsave("plots/eba_nvc_final.png", dpi = 600, device = "png", units = "cm", width = 25, height = 12.5)
   
+print(paste0("end of eba procedure for NAVCO: ", Sys.time()))
+
   
+print(paste0("start of eba procedure for BESS: ", Sys.time()))
 
 
 dep <- "unarmed.rev.q"
@@ -164,7 +170,7 @@ print(
 )
 
 for(j in k){
-  print(ncol(j))
+  print(paste0(ncol(j),": ", Sys.time()))
   if(ncol(j) == ncol(k[[1]])){
     fin <- data.frame(var = NA, coef = NA, se = NA, gmean = NA)
     cl <- parallel::makeCluster(6)
@@ -237,7 +243,7 @@ fin1 <- fin %>%
 
 write.xlsx(fin1, "imp_models/eba_kor_4_to_12_final.xlsx")
 
-eba.nvc <- ggplot(fin1,aes(x = coef/se, fill = var))+
+eba.nvc <- ggplot(fin1, aes(x = coef/se, fill = var))+
   geom_density(alpha = 0.5, kernel = "epanechnikov")+
   theme_classic()+
   geom_vline(xintercept = c(1.96, -1.96), linetype = "dotted")+
@@ -267,6 +273,9 @@ eba.comb[,-1] <- lapply(eba.comb[,-1], function(x){round(x,3)})
 
 write.xlsx(eba.comb, file = "tables/eba_comb_final.xlsx")
   
+print(paste0("end of eba procedure for BESS: ", Sys.time()))
+
+
 end.time = Sys.time()
 
 print(paste0("execution time for double eba is: ", end.time - start.time))
