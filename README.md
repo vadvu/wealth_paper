@@ -6,10 +6,10 @@
 
 This page contains replication materials for the paper *"Wealth and Rebellion: A Dualistic Perspective on Income Level and Revolutions"*. 
 
-The preprint is available at this [link](https://wp.hse.ru/data/2024/06/10/2115952879/92PS2024.pdf) or at [ResearchGate](http://dx.doi.org/10.13140/RG.2.2.25291.60966), [RePEc](soon).
+The preprint is available at this [link](https://wp.hse.ru/data/2024/06/10/2115952879/92PS2024.pdf) or at [ResearchGate](http://dx.doi.org/10.13140/RG.2.2.25291.60966), [RePEc](https://econpapers.repec.org/RePEc:hig:wpaper:92/ps/2024).
 
 **Suggested Citation**:
-Ustyuzhanin, Vadim, Wealth and Rebellion: A Dualistic Perspective on Income Level and Revolutions (June 10, 2024). HSE Working Paper, WP BRP Series: Political Science / PS, Available at ResearchGate: http://dx.doi.org/10.13140/RG.2.2.25291.60966
+Ustyuzhanin, Vadim (2024). Wealth and Rebellion: A Dualistic Perspective on Income Level and Revolutions. HSE Working Paper, WP BRP Series: Political Science / PS, Available at ResearchGate: http://dx.doi.org/10.13140/RG.2.2.25291.60966
 
 **Files and folders**: 
 
