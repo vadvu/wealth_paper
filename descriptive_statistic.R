@@ -1,5 +1,3 @@
-library(gtsummary)
-
 data %>%
   select(NVC_1.3_NONVIOL, unarmed.rev.q, 
          gdppc.gap.ln_l, 
@@ -45,4 +43,4 @@ data %>%
               missing_text = "NA"
   ) %>% 
   as_gt() %>%
-  gt::gtsave(filename = "tables/summary.html")
+  gtsave(filename = "tables/summary.html")

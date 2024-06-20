@@ -1,32 +1,58 @@
-suppressWarnings({ 
+
+wealth.pack <- c(
+  #data handling
+  "tidyr", 
+  "dplyr", 
   
-  suppressMessages({
-    library(tidyr) #data handling
-    library(dplyr) #darta handling
-    library(openxlsx) #read data
-    library(readr) #read data
-    
-    library(ggplot2) #plots
-    library(jtools) #plots
-    library(latex2exp) #plots
-    
-    library(Amelia) #pachage for multiplt imputation with panel data
-    
-    library(randomForestSRC) #ML models for rare events, you dont need it
-    library(csra) #github package
-    library(brglm2) #for rare events logistic regression
-    library(bgeva) #you dont need it 
-    library(margins) #marginal effects
-    library(sjPlot) #good tool for models vizualization 
-    library(ggeffects) #to analyze models
-    library(sandwich) #usual HC SE
-    library(lmtest) #for testing models with user-specific SE
-    library(clubSandwich) #for clustered SE
-    
-    library(parallel)
-    library(foreach)
-    library(doParallel)
-  })
+  #read/write data
+  "openxlsx",
+  "readr",
   
-}) 
-print("libraries ok")
+  #plots/tables
+  "ggplot2",
+  "jtools",
+  "latex2exp",
+  "gtsummary",
+  "gt",
+  
+  #imputations
+  "Amelia",
+  
+  #analysis
+  "randomForestSRC",
+  "brglm2",
+  "margins",
+  "sandwich",
+  "lmtest",
+  
+  #parallel computations
+  "parallel",
+  "foreach",
+  "doParallel"
+  )
+
+if ( length(which(wealth.pack %in% installed.packages())) == length(wealth.pack)){
+  sapply(wealth.pack, require, character.only = TRUE)
+  } else {
+  
+    need.to.install = which( !(wealth.pack %in% installed.packages()) )
+    install.ask = readline(
+      cat("The analysis require libraries that are not found on your computer: \n", 
+          paste0(wealth.pack[need.to.install], collapse = "\n "),
+          "\n",
+          "Install them? (write yes/no)"
+          )
+      )
+    if(install.ask == "yes"){
+      for(i in need.to.install){install.packages(wealth.pack[i])}
+    } else { 
+      paste0("The analysis will not be done")
+    }
+}
+
+
+
+
+
+
+

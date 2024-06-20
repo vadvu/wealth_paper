@@ -17,10 +17,7 @@ Ustyuzhanin, Vadim (2024). Wealth and Rebellion: A Dualistic Perspective on Inco
 
 ________
 
-- data.rds - data used in the analysis. 
-
-________
-
+- data - subfolder with data in .RDS format used in the analysis and codebook in .pdf. 
 - imputed - subfolder with 50 imputed datasets. 
 - imp_models - subfolder with aggregated results across imputed datasets. 
 - plots - subfolder with plots. 

@@ -1,19 +1,19 @@
 
 #### 1. preparation
 
-suppressWarnings({
-  source("libraries.R")
-  })
+#### 1.1 libraries (and installation if needed)
 
+source("libraries.R")
+ 
+#### 1.2 data loading, see CODEBOOK in the data folder for the variables description
 
-data <- readRDS("data.rds")
+data <- readRDS("data/data.rds")
 
-
-#### 1.1 descriptive statistic table
+#### 1.3 descriptive statistic table
 
 source("descriptive_statistic.R")
 
-#### 1.2 imputation algorithm (imputed datasets are already in the folder "imputed")
+#### 1.4 imputation algorithm (imputed datasets are already in the folder "imputed")
 
 # source("imputations.R")
 
@@ -46,6 +46,7 @@ vcov.m1_log.n.nvc <- vcovCL(m1_log.n.nvc,
                             type = "HC0")
 
 k1 <- coeftest(m1_log.n.nvc, vcov. = vcov.m1_log.n.nvc)
+
 
 mar1.n.nvc <- margins(m1_log.n.nvc, 
                       at = list("gdppc.gap.ln_l" = seq(

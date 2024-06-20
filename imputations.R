@@ -1,12 +1,11 @@
 set.seed(2024)
 data0 <- data %>% select(iso3c, year, region, #id
                          #DV
-                         NVC_1.3_NONVIOL, NVC_1.3_VIOL, unarmed.rev.q, armed.rev.q, 
+                         NVC_1.3_NONVIOL, unarmed.rev.q, 
                          #vars based on DV
-                         "sum.nvc.nonviol","sum.rev.q.nonviol","sum.nvc.viol","sum.rev.q.viol",
-                         "sum.nvc.nonviol_l","sum.rev.q.nonviol_l","sum.nvc.viol_l",
-                         "sum.rev.q.viol_l","cumsum.nvc.nonviol","cumsum.unarmed.rev.q",
-                         "cumsum.nvc.viol","cumsum.armed.rev.q",
+                         "sum.nvc.nonviol","sum.rev.q.nonviol",
+                         "sum.nvc.nonviol_l","sum.rev.q.nonviol_l",
+                         "cumsum.nvc.nonviol","cumsum.unarmed.rev.q",
                          #other vars
                          polity2_l, "gdppc.gap.ln_l", "BESS_plus_WB_Urbanization_l",
                          "WPP_15_24_share_15plus_l", "Mean_year_schooling_interpolated_l", "Polity5_durable_ln_l",
@@ -14,7 +13,7 @@ data0 <- data %>% select(iso3c, year, region, #id
                          oil.pc.ln_l, discrimpop_l, polity2_l.sq, growth.gap.5_l
                          )
 
-vars = colnames(data0)[-c(1:7)]
+vars = colnames(data0)[-c(1:5)]
 bds <- as.matrix(
   rbind(
     c(which(colnames(data0)=="BESS_plus_WB_Urbanization_l"), 0, 100), #BESS_plus_WB_Urbanization_l
@@ -42,15 +41,13 @@ a.out1 <- amelia(data0,
                  lags = vars,
                  leads = vars,
                  polytime = 3, intercs = F,
-                 ords = c("polity2_l", "polity2_l.sq", "cumsum.armed.rev.q", "cumsum.nvc.viol", "cumsum.unarmed.rev.q",
+                 ords = c("polity2_l", "polity2_l.sq", 
+                          "cumsum.unarmed.rev.q",
                           "cumsum.nvc.nonviol"), 
-                 noms = c("sum.rev.q.viol_l", "sum.rev.q.viol", "sum.nvc.viol_l", "sum.nvc.viol", 
-                          "sum.rev.q.nonviol_l", "sum.rev.q.nonviol", "sum.nvc.nonviol_l", "sum.nvc.nonviol"),
+                 noms = c("sum.rev.q.nonviol_l", "sum.rev.q.nonviol", "sum.nvc.nonviol_l", "sum.nvc.nonviol"),
                  incheck = T,
                  startvals = 1,
                  idvars = c("NVC_1.3_NONVIOL",
-                            "NVC_1.3_VIOL",
-                            "armed.rev.q",
                             "unarmed.rev.q",
                             "region"),
                  empri = 0.005*nrow(data0),

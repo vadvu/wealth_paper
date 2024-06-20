@@ -62,7 +62,6 @@ for(j in k){
   }
   fin.i <- foreach(i = 1:nrow(j), .combine = rbind,  
                    .packages = c("brglm2", 
-                                 "clubSandwich", 
                                  "sandwich",
                                  "lmtest",
                                  "dplyr",
@@ -180,7 +179,6 @@ for(j in k){
   }
   fin.i <- foreach(i = 1:nrow(j), .combine = rbind,  
                    .packages = c("brglm2", 
-                                 "clubSandwich", 
                                  "sandwich",
                                  "lmtest",
                                  "dplyr",
